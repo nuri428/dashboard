@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',    
     'home',
+    "django_mysql",
     "apps.dashboard",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -80,15 +82,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -130,3 +123,46 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ROOT_URLCONF = 'core.urls'
+
+ES_HOST = "192.168.48.3"
+ES_PORT = 9200
+ES_USER = "elastic"
+ES_PASSWORD = "manhae428!"
+NEWS_BULK_INDEX = "news_article_bulk"
+NEWS_EMBEDDING_INDEX = "news_article_embedding"
+
+DATABASE_ROUTERS = ["core.Router.DemoRouter"]
+
+DATABASE_APPS_MAPPING = {
+    "default": "scrap_db",
+    "home": "home_db",          
+}
+
+DATABASES={
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "dashboard_manager",
+        "USER": "scraper",
+        "PASSWORD": "Scraper123!",
+        "HOST": "192.168.0.143",
+        "PORT": "3306",
+        "CONN_MAX_AGE": 120,
+        "COMMAND_TIMEOUT": 60,
+        "engin_options": {"pool_pre_ping": True},
+        "OPTIONS": {"charset": "utf8mb4"},
+    },
+    "home_db": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "news_db",
+        "USER": "scraper",
+        "PASSWORD": "Scraper123!",
+        "HOST": "192.168.0.143",
+        "PORT": "3306",
+        "CONN_MAX_AGE": 120,
+        "COMMAND_TIMEOUT": 60,
+        "engin_options": {"pool_pre_ping": True},
+        "OPTIONS": {"charset": "utf8mb4"},
+    },   
+}
+ 
+ 
