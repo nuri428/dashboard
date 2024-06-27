@@ -270,4 +270,4 @@ node_modules/
 */__pycache__/
 *.pyc
 *.pyo
-home/__pycache__/views.cpython-310.pyc
+*/__pycache__/*.pyc
