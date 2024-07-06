@@ -271,3 +271,4 @@ node_modules/
 *.pyc
 *.pyo
 */__pycache__/*.pyc
+home/__pycache__/urls.cpython-310.pyc
