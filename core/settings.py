@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django_mysql",
     "apps.dashboard",
     "django_extensions",
+    "apps.news",
 ]
 
 MIDDLEWARE = [
@@ -151,7 +152,7 @@ DATABASES={
         "engin_options": {"pool_pre_ping": True},
         "OPTIONS": {"charset": "utf8mb4"},
     },
-    "home_db": {
+    "news_db": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "news_db",
         "USER": "scraper",

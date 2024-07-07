@@ -14,16 +14,16 @@ class DemoRouter:
         """
         Attempts to read user models go to users_db.
         """
-        if model._meta.app_label == "home":
-            return "home_db"        
+        if model._meta.app_label == "apps.news":
+            return "news_db"        
         return None
 
     def db_for_write(self, model, **hints):
         """
         Attempts to write user models go to users_db.
         """
-        if model._meta.app_label == "home":
-            return "home_db"
+        if model._meta.app_label == "news":
+            return "news_db"
         
         return None
 
@@ -31,7 +31,7 @@ class DemoRouter:
         """
         Allow relations if a model in the user app is involved.
         """
-        if obj1._meta.app_label == "home" or obj2._meta.app_label == "home":
+        if obj1._meta.app_label == "apps.news" or obj2._meta.app_label == "apps.news":
             return True
 
         return None
@@ -41,6 +41,6 @@ class DemoRouter:
         Make sure the auth app only appears in the 'users_db'
         database.
         """
-        if app_label == "home":
-            return db == "home_db"        
+        if app_label == "apps.news":
+            return db == "news_db"        
         return None
